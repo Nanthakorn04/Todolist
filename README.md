@@ -41,6 +41,17 @@ npm run dev
 
 - `npm run dev` เปิดหน้าเว็บสำหรับพัฒนา
 - `npm run dev:api` เปิด Express API
+- `npm run build` สร้างไฟล์สำหรับ deploy
+- `npm run lint` ตรวจโค้ด
+
+## Deploy บน Vercel
+
+1. Push โปรเจกต์ขึ้น GitHub แล้ว Import repository ใน Vercel.
+2. ใช้ Root Directory `./` ซึ่งเป็นโฟลเดอร์ที่มี `package.json`.
+3. เพิ่ม Environment Variables ใน Vercel: `MONGODB_URI`, `MONGODB_DB`, และ `AUTH_SECRET`.
+4. ใช้ Build Command `npm run build` และ Output Directory `dist`.
+
+ไฟล์ `.env` ใช้เก็บค่าลับในเครื่องเท่านั้น อย่า push ขึ้น GitHub; ให้เพิ่มค่าจริงใน Vercel Project Settings แทน
 
 ## โครงสร้างหลัก
 
@@ -48,5 +59,6 @@ npm run dev
 - `src/components/` เก็บส่วนหน้าเว็บ เช่น Dashboard, กระดานงาน และ modal
 - `src/api/` รวมฟังก์ชันเรียก API
 - `src/tailwind.css` เก็บ Tailwind และคลาสที่ใช้ซ้ำในหน้าเว็บ
-- `server/` เก็บ Express API, การยืนยันตัวตน และการเชื่อมต่อ MongoDB
-
+- `api/[...path].js` เปิด Express API เป็น Vercel Function
+- `server/app.js` เก็บ Express routes และ `server/index.js` ใช้เปิด API ในเครื่อง
+- `server/auth.js` และ `server/db.js` ดูแล session กับ MongoDB
