@@ -59,6 +59,6 @@ npm run dev
 - `src/components/` เก็บส่วนหน้าเว็บ เช่น Dashboard, กระดานงาน และ modal
 - `src/api/` รวมฟังก์ชันเรียก API
 - `src/tailwind.css` เก็บ Tailwind และคลาสที่ใช้ซ้ำในหน้าเว็บ
-- `api/[...path].js` เปิด Express API เป็น Vercel Function
+- `api/` มีไฟล์ทางเข้าสำหรับแต่ละ API route บน Vercel และเรียก Express app ร่วมกัน
 - `server/app.js` เก็บ Express routes และ `server/index.js` ใช้เปิด API ในเครื่อง
 - `server/auth.js` และ `server/db.js` ดูแล session กับ MongoDB
